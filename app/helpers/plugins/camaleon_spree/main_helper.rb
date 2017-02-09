@@ -80,4 +80,8 @@ module Plugins::CamaleonSpree::MainHelper
       args[:parsed_menu][:current] = URI::parse(site_current_url).path == args[:parsed_menu][:link]
     end
   end
+
+  def method_missing(m, *args, &blk)
+    spree.send(m, *args, &blk)
+  end
 end
