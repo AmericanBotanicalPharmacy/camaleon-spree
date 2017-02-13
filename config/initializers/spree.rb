@@ -57,8 +57,8 @@ Rails.application.config.to_prepare do
 
   # redirect to cama dashboard
   Spree::Admin::RootController.class_eval do
-    def index
-      redirect_to Rails.application.routes.url_helpers.cama_admin_dashboard_path
-    end
+    # def index
+    #   redirect_to Rails.application.routes.url_helpers.cama_admin_dashboard_path
+    # end
   end
 end

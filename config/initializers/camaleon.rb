@@ -11,7 +11,7 @@ Rails.application.config.to_prepare do
 
   ########## changes to camaleon to include spree ##########
   CamaleonCms::AdminController.class_eval do
-    before_action :set_spree_buttons
+    # before_action :set_spree_buttons
     helper_method :current_store
 
     def current_store
