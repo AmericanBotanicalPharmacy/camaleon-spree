@@ -2,6 +2,7 @@ Rails.application.config.to_prepare do
   ########## changes for spree to works with camaleon  ##########
   Spree::UserSessionsController.class_eval do
     private
+
     def redirect_back_or_default(default)
       redirect_to(cookies[:return_to] || session["spree_user_return_to"] || default)
       session["spree_user_return_to"] = nil
@@ -41,24 +42,23 @@ Rails.application.config.to_prepare do
     def get_field_groups(args = {}) # needs to fix for multisite&multistore support
       CamaleonCms::CustomFieldGroup.where(object_class: self.class.name)
     end
-
   end
-
 
   Spree::Admin::ProductsController.class_eval do
     create.after :save_custom_fields
     update.after :save_custom_fields
 
     private
+
     def save_custom_fields
       @object.set_field_values(params[:field_options])
     end
   end
 
   # redirect to cama dashboard
-  Spree::Admin::RootController.class_eval do
-    # def index
-    #   redirect_to Rails.application.routes.url_helpers.cama_admin_dashboard_path
-    # end
-  end
+  # Spree::Admin::RootController.class_eval do
+  #   # def index
+  #   #   redirect_to Rails.application.routes.url_helpers.cama_admin_dashboard_path
+  #   # end
+  # end
 end
