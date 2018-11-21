@@ -6,7 +6,6 @@ Rails.application.config.to_prepare do
     include Spree::Core::ControllerHelpers::Store
 
     helper Spree::BaseHelper
-    helper Spree::StoreHelper
   end
 
   ########## changes to camaleon to include spree ##########

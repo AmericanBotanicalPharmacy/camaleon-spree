@@ -38,7 +38,7 @@ module Plugins::CamaleonSpree::MainHelper
 
     # Products
     args[:custom_menus]["spree_menus_products"] = {link: "", title: "Spree Products"}
-    Spree::Product.reorder(name: :ASC).all.each do |product|
+    Spree::Product.reorder(name: :asc).all.each do |product|
       args[:custom_menus]["spree_product_#{product.id}"] = {link: spree.product_path(product), title: product.name, kind: 'Spree::Product', id: product.id}
     end
   end
