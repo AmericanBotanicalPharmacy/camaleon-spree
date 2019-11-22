@@ -97,7 +97,7 @@ Rails.application.config.to_prepare do
     end
 
     def cama_update_roles(role)
-      self.update_column(:role, spree_roles.where(spree_roles: {name: 'admin'}).any? ? 'admin' : 'user')
+      self.update_column(:role, spree_roles.where(spree_roles: { name: 'admin' }).any? ? 'admin' : nil)
     end
   end
 end
