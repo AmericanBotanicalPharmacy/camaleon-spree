@@ -1,5 +1,5 @@
 # update camaleon session routes
-module CamaleonCms::SessionHelper
+module CamaleonSpree::CamaleonCms::SessionHelperDecorator
   def cama_current_user
     @cama_current_user ||= lambda{
       if spree_current_user.try(:id).present?
@@ -23,3 +23,5 @@ module CamaleonCms::SessionHelper
   end
   alias_method :cama_admin_logout_url, :cama_admin_logout_path
 end
+
+::CamaleonCms::SessionHelper.prepend(CamaleonSpree::CamaleonCms::SessionHelperDecorator)
